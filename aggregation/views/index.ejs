@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		  <title><%= title %></title>
+		<style>
+		.login-form {
+			width: 300px;
+			margin: 0 auto;
+			font-family: Tahoma, Geneva, sans-serif;
+		}
+		.login-form h1 {
+			text-align: center;
+			color: #4d4d4d;
+			font-size: 24px;
+			padding: 20px 0 20px 0;
+		}
+		.login-form input[type="password"],
+		.login-form input[type="text"] {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+		}
+		.login-form input[type="submit"] {
+			width: 100%;
+			padding: 15px;
+			background-color:red;
+			border: 0;
+			box-sizing: border-box;
+			cursor: pointer;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		</style>
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<meta charset="UTF-8">
+<meta name="description" content="sotre">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">  -->
+</head>
+	<body>
+	<nav class="navbar navbar-light bg-light">
+	<a class="navbar-brand" href="/">
+	<%= title %>
+	</a>
+	<ul class="list-unstyled list-inline pull-right">
+	</nav>
+		<div class="row">
+			<div class="col-md-6">
+				<h3>Books table</h3>
+				<table class="table  table-condensed" width="100%"  >
+					<thead>
+				<tr>
+				<th>Sr</th>
+				  <th>id</th>
+				<!-- <th>thumbnailUrl</th> -->
+				  <th>title</th>
+			<!-- 	  <th>isbn</th> -->
+				
+				<!--   <th>publishedDate</th> -->
+				 <!--  <th>shortDescription</th> -->    
+				</tr>
+				    </thead>
+				    <tbody>
+						<% if(result.length){ 
+				    for(var i = 0;i < result.length;i++) { %>
+						<tr>
+						<td><%=i+1%></td>
+						    <td><%=result[i]._id%></td>
+						 <!-- <td><img src="<%=result[i].thumbnailUrl%>"></td> -->
+						 <td><%=result[i].title%></td>
+						<!--      <td><%=result[i].isbn%></td> -->
+				    
+				  <!-- 		<td><%=result[i].date%></td> -->
+				      <!--   <td><%=result[i].shortDescription%></td> -->
+				</tr>
+				       	<%}}%>
+				    </tbody>
+				  </table>
+			</div>
+			<div class="col-md-6">
+			<h3>Customer table</h3>
+		<table class="table  table-condensed" width="100%"  >
+					<thead>
+				<tr>
+				<th>Sr</th>
+			
+				  <th>id</th>
+		
+				  <th>Email</th>
+				
+				   
+				</tr>
+				    </thead>
+				    <tbody>
+						<% if(docs.length){ 
+				    for(var i = 0;i < docs.length;i++) { %>
+						<tr>
+						<td><%=i+1%></td>
+						<td><%=docs[i]._id%></td>
+						 <td><%=docs[i].email%></td>
+						
+				</tr>
+				       	<%}}%>
+				    </tbody>
+				  </table>
+
+		
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<h3>Order table</h3>
+				<table class="table  table-condensed" width="100%"  >
+					<thead>
+				<tr>
+				<th>Sr</th>
+				 <th>Order_id</th>
+				<th>id_cust</th>
+				  <th>id_book</th>
+			<!-- 	  <th>isbn</th> -->
+				  <th>qty</th>
+				  <th>price</th>
+			<!-- 	  <th>date</th> -->
+				 <!--  <th>shortDescription</th> -->    
+				</tr>
+				    </thead>
+				    <tbody>
+						<% if(order.length){ 
+				    for(var i = 0;i < order.length;i++) { %>
+						<tr>
+						<td><%=i+1%></td>
+						 <td><%=order[i]._id%></td>
+						 <td><%=order[i].id_cust%></td>
+						<td><%=order[i].id_book%></td>
+				  		<td><%=order[i].qty%></td>
+				  		<td><%=order[i].price%></td>
+				  <!-- 		<td><%=order[i].date%></td> -->
+				</tr>
+				       	<%}}%>
+				    </tbody>
+				  </table>
+			</div>
+			<div class="col-md-6">
+			<h3>Aggregation View</h3>
+		<table class="table  table-condensed" width="100%"  >
+					<thead>
+				<tr>
+				<th>Sr</th>
+				 <th>Order_id</th>
+				 <th>Email</th>
+				  <th>title</th>
+				   <th>qty</th>
+				      <th>price</th>
+				</tr>
+				    </thead>
+				    <tbody>
+						<% if(aggregate.length){ 
+				    for(var i = 0;i < aggregate.length;i++) { %>
+						<tr>
+						<td><%=i+1%></td>
+						<td><%=aggregate[i]._id%></td>
+						 <td><%=aggregate[i].cust%></td>
+						  <td><%=aggregate[i].title%></td>
+						    <td><%=aggregate[i].qty%></td>
+						      <td><%=aggregate[i].price%></td>
+				</tr>
+				       	<%}}%>
+				    </tbody>
+				  </table>
+
+		
+			</div>
+		</div>
+	</body>
+</html>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

@@ -1,0 +1,22 @@
+{
+  "name": "bookstore",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parse": "^0.1.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-middleware": "^3.4.2",
+    "express-session": "^1.17.0",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.9.7",
+    "morgan": "~1.9.1",
+    "session": "^0.1.0"
+  }
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+	<head>
+		<meta charset="utf-8">
+		  <title><%= title %></title>
+	
+	
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta charset="UTF-8">
+<meta name="description" content="sotre">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+<style type="text/css">
+
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+  size: 1px;
+}
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+        <div class="container-fluid">
+
+                 <div class="table-responsive">
+                 <div class="dropdown">
+<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Limit
+<span class="caret"></span></button>
+<ul class="dropdown-menu">
+<li><a href="/<%=page%>-2">2</a></li>
+<li><a href="/<%=page%>-3">3</a></li>
+<li><a href="/<%=page%>-5">5</a></li>
+<li><a href="/<%=page%>-10">10</a></li>
+</ul>
+</div>
+                 <table class="table  table-condensed" width="100%"  >
+					<thead>
+				<tr>
+				<th>Sr</th>
+				<th>thumbnailUrl</th>
+				  <th>title</th>
+				  <th>isbn</th>
+				  <th>pageCount</th>
+				  <th>publishedDate</th>
+				
+				  <th>shortDescription</th>
+				    
+				</tr>
+				    </thead>
+				    <tbody>
+						<% if(result.length){ 
+				    for(var i = 0;i < result.length;i++) { %>
+						<tr>
+						<td><%=i+1%></td>
+						 <td><img src="<%=result[i].thumbnailUrl%>"></td>
+						 <td><%=result[i].title%></td>
+						     <td><%=result[i].isbn%></td>
+				        <td><%=result[i].pageCount%></td>
+				  		<td><%=result[i].publishedDate%></td>
+				        <td><%=result[i].shortDescription%></td>
+				</tr>
+				       	<%}}%>
+				    </tbody>
+				  </table>
+				  	
+<nav aria-label="Page navigation example">
+<ul class="pagination">
+<li class="page-item"><a class="page-link" href="/1-<%=limit%>">First</a></li>
+<li class="page-item"><%
+
+if(page!=1){ 
+var a=parseInt(page)-1;
+%>
+<a class="page-link" href="/<%=a%>-<%=limit%>">Previous</a>
+
+<%
+}
+%></li>
+<!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+<li class="page-item"><a class="page-link" href="#">2</a></li>
+<li class="page-item"><a class="page-link" href="#">3</a></li> -->
+<li class="page-item">
+<%if(pages!=page){ 
+page=parseInt(page)+1;
+%>
+<a class="page-link" href="/<%=page%>-<%=limit%>">Next</a>
+<%
+}
+%>
+</li>
+<li class="page-item"><a class="page-link" href="/<%=pages%>-<%=limit%>">Last</a></li>
+</ul>
+</nav>
+
+
+
+Total: <%=total%>
+			
+</div>
+</div>
+</body>
+</html>
