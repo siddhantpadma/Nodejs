@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  
+<div class="row">
+<div class="container-fluid">
+	<form method="POST"  enctype="multipart/form-data">
+  <p>File Upload  </p>
+<div class="form-group">
+	<input type="file"  class="form-control"  name="document">
+	<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+
+</form>
+<div  class="table-responsive">
+<table class="table table-bordered">
+
+
+<% if(result.length){ 
+for(var i = 0;i < result.length;i++) { %>
+<!-- <thead>
+<tr>
+<th>File</th>
+
+<th></th>
+</tr>
+
+</thead> -->
+<tbody>
+<tr>
+<td><img src="/public/uploads/<%=result[i].filename%>" width="200px"></td>
+</tr>
+<%}}%>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+  </body>
+</html>
